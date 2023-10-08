@@ -7,7 +7,7 @@ const cloudinary = require("cloudinary");
 exports.register = async (req, res) => {
     try {
 
-        const {name, email, password, } = req.body;
+        const {name, email, password,avatar } = req.body;
         let user = await User.findOne({email});
 
         if(user){
@@ -16,15 +16,15 @@ exports.register = async (req, res) => {
                 .json({ success:false, message:"User already exists"});
         }
 
-        // const myCloud = await cloudinary.v2.uploader.upload(avatar, {
-        //     folder: "avatars",
-        // });
+        const myCloud = await cloudinary.v2.uploader.upload(avatar, {
+            folder: "avatars",
+        });
 
         user = await User.create({
             name, 
             email,
             password, 
-            // avatar:{public_id:myCloud.public_id, url: myCloud.secure_url},
+            avatar:{public_id:myCloud.public_id, url: myCloud.secure_url},
         });
 
         const token = await user.generateToken();
@@ -55,7 +55,9 @@ exports.login = async (req, res) => {
     try{
         const {email , password } = req.body;
 
-        const user = await User.findOne({email}).select("+password");
+        const user = await User.findOne({email})
+            .select("+password")
+            .populate("posts followers following");
 
         if(!user) {
             return res.status(400).json({
@@ -426,7 +428,7 @@ exports.forgotPassword = async (req,res) => {
 
         await user.save();
 
-        const resetUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetpasswordToken}`;
+        const resetUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetpasswordToken}`;
 
         const message = `Reset your password by clicking on the link below: \n\n ${resetUrl}`;
 

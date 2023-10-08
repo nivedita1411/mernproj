@@ -31,22 +31,22 @@ const Home = () => {
     },[dispatch]);
 
     useEffect(() => {
-
-        if(error){
-            alert.error(error);
-            dispatch({ type: "clearErrors"});
+        if (error) {
+          alert.error(error);
+          dispatch({ type: "clearErrors" });
         }
-
-        if(likeError){
-            alert.error(likeError);
-            dispatch({ type: "clearErrors"});
+    
+        if (likeError) {
+          alert.error(likeError);
+          dispatch({ type: "clearErrors" });
         }
-        if(message){
-            alert.message(message);
-            dispatch({ type: "clearMessage"});
+        if (message) {
+          alert.success(message);
+          dispatch({ type: "clearMessage" });
         }
+      }, [alert, error, message, likeError, dispatch]);
 
-    },[alert,error,message,dispatch,likeError]);
+    
 
 
 

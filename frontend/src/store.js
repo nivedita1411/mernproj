@@ -1,6 +1,6 @@
 import { configureStore , getDefaultMiddleware } from "@reduxjs/toolkit";
-import {allUsersReducer, postOfFollowingReducer, userReducer,} from "./Reducers/User";
-import { likeReducer } from "./Reducers/Post";
+import {allUsersReducer, postOfFollowingReducer, userProfileReducer, userReducer,} from "./Reducers/User";
+import { likeReducer, myPostReducer, userPostsReducer } from "./Reducers/Post";
 
 const store = configureStore({
 
@@ -12,6 +12,9 @@ const store = configureStore({
         postOfFollowing : postOfFollowingReducer,
         allUsers: allUsersReducer,
         like: likeReducer,
+        myPosts:myPostReducer,
+        userProfile: userProfileReducer,
+        userPosts:userPostsReducer,
     },
 });
 
