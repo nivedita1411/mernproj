@@ -60,7 +60,7 @@ const Account = () => {
           {
             posts && posts.length > 0 ? 
             (
-              posts && posts.map((post) => (
+              posts.map((post) => (
               <Post
                 key={post._id}
                 postId={post._id}
@@ -78,7 +78,7 @@ const Account = () => {
              )  : (
 
              <Typography variant="h6">You have not made any post</Typography>
-               )
+                )
           }
         </div>
         <div className="accountright">

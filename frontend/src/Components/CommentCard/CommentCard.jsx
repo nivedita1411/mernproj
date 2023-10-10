@@ -5,7 +5,7 @@ import { Typography , Button} from '@mui/material';
 import {Delete} from "@mui/icons-material"
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteCommentOnPost } from '../../Actions/Post';
-import { getFollowingPosts } from '../../Actions/User';
+import { getFollowingPosts, getMyPosts } from '../../Actions/User';
 
 const CommentCard = ({
     userId,
@@ -22,6 +22,8 @@ const CommentCard = ({
     const deleteCommentHandle = () => {
         dispatch(deleteCommentOnPost(postId, commentId));
         if(isAccount) {
+
+            dispatch(getMyPosts());
 
         }
         else{

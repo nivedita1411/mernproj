@@ -94,12 +94,12 @@ const UserProfile = () => {
               key={post._id}
               postId={post._id}
               caption={post.caption}
-              postImage={post.image.url}
+              postImage={post.image && post.image.url}
               likes={post.likes}
               comments={post.comments}
-              ownerImage={post.owner.avatar.url}
-              ownerName={post.owner.name}
-              ownerId={post.owner._id}
+              ownerImage={post.owner && post.owner.avatar && post.owner.avatar.url}
+              ownerName={ post.owner && post.owner.name}
+              ownerId={post.owner && post.owner._id}
             />
           ))
         ) : (

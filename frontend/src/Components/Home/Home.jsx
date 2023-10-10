@@ -61,7 +61,7 @@ const Home = () => {
                         key = {post._id}
                         postId = {post._id}
                         caption = {post.caption}
-                        postImage = {post.image.url}
+                        postImage = {post.image && post.image.url}
                         likes = {post.likes}
                         comments = {post.comments}
                         ownerImage = {post.owner.avatar.url}
