@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "supervisor backend/server.js"
+    "dev": "node backend/server.js"
   },
   "author": "",
   "license": "ISC",
