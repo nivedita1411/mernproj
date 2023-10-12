@@ -60,7 +60,7 @@ const Account = () => {
           {
             posts && posts.length > 0 ? 
             (
-              posts.map((post) => (
+              user.posts && posts.map((post) => (
               <Post
                 key={post._id}
                 postId={post._id}
